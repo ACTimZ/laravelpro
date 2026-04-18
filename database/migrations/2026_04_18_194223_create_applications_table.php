@@ -18,6 +18,7 @@ return new class extends Migration
             $table->date('date');
             $table->enum('payment', ['cash', 'transfit']);
             $table->enum('status', ['new', 'continue', 'end'])->default('new');
+            $table->text('review')->nullable();
             $table->timestamps();
         });
     }

@@ -12,15 +12,13 @@ class AdminController extends Controller
         return view('admin', compact('apps'));
     }
 
-    public function update($id, Request $request) {
+    public function post($id, Request $request) {
         $request->validate([
-            'status' => 'required|in:new,continue,end'
+            'status' => 'required'
         ]);
-
-        Application::find($id)->update([
+        Application::where('id', $id)->update([
             'status' => $request->status
         ]);
-
-        return back()->with('success', 'Статус заявки №' . $id . 'поменялся!');
+        return back();
     }
 }

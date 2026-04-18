@@ -8,20 +8,21 @@ use App\Http\Controllers\AuthController;
 Route::get('/', [BasicController::class, 'index'])->name('home');
 
 Route::middleware('guest')->group(function () {
-    Route::get('/register', [AuthController::class, 'registerIndex'])->name('register');
-    Route::get('/login', [AuthController::class, 'loginIndex'])->name('login');
-    Route::post('/register-store', [AuthController::class, 'register'])->name('register-store');
-    Route::post('/login-store', [AuthController::class, 'login'])->name('login-store');
+    Route::get('/login', [AuthController::class, 'login'])->name('login');
+    Route::post('/login_post', [AuthController::class, 'login_post'])->name('login.post');
+    Route::get('/register', [AuthController::class, 'register'])->name('register');
+    Route::post('/register_post', [AuthController::class, 'register_post'])->name('register.post');
 });
 
 Route::middleware('auth')->group(function () {
-    Route::get('/apps', [BasicController::class, 'appsIndex'])->name('apps');
-    Route::get('/create-apps', [BasicController::class, 'apps'])->name('create-apps');
-    Route::get('/logout', [BasicController::class, 'logout'])->name('logout');
-    Route::post('/create-apps-store', [BasicController::class, 'appsStore'])->name('create-apps-store');
+    Route::get('/apps', [BasicController::class, 'apps'])->name('apps');
+    Route::post('/apps_review/{id}', [BasicController::class, 'apps_review'])->name('apps.review');
+    Route::get('/apps_create', [BasicController::class, 'apps_create'])->name('apps.create');
+    Route::post('/apps_create_post', [BasicController::class, 'apps_create_post'])->name('apps.create.post');
+    Route::get('/logout', [AuthController::class, 'logout'])->name('logout');
 
     Route::middleware('admin')->group(function () {
         Route::get('/admin', [AdminController::class, 'index'])->name('admin');
-        Route::get('/admin-store/{id}', [AdminController::class, 'update'])->name('admin-store');
+        Route::post('/admin/post/{id}', [AdminController::class, 'post'])->name('admin.post');
     });
 });

@@ -14,12 +14,13 @@ class DatabaseSeeder extends Seeder
     public function run(): void
     {
         // User::factory(10)->create();
+
         User::create([
             'login' => 'Admin',
-            'phone' => '8(888)888-88-88',
-            'email' => 'admin@admin.ru',
-            'fio' => 'Администратор',
+            'email' => 'admin@mail.ru',
             'password' => 'KorokNET',
+            'fio' => 'Админ',
+            'phone' => '8(800)888-88-88',
         ]);
 
         // User::factory()->create([

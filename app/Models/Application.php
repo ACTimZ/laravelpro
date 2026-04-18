@@ -7,11 +7,12 @@ use Illuminate\Database\Eloquent\Model;
 class Application extends Model
 {
     protected $fillable = [
-        'user_id',
         'course_name',
-        'date',
+        'user_id',
         'payment',
         'status',
+        'date',
+        'review',
     ];
 
     public function user() {
