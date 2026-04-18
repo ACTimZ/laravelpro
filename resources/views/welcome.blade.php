@@ -7,6 +7,7 @@
     <title>Document</title>
 </head>
 <body>
+    <h1>Добро пожаловать!</h1>
     <img src="{{ asset('images/image.webp') }}" alt="">
     qwe
 </body>
